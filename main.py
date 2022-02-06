@@ -33,4 +33,5 @@ for fcs in paths_to_FBs:
             if file.endswith('.edf'):
                 add_fb(path_to_file + file)
 
-print(func_blocks)
+for key, value in func_blocks.items():
+    print(key, value)
