@@ -14,7 +14,7 @@ def counter(path_to_file):
         if line.find('PVI', pos, pos + 150) != -1:
             global tag_counter
             tag_counter += 1
-            #print(path_to_file)
+
 
 with os.scandir(project_path) as listOfEntries:
     for entry in listOfEntries:
