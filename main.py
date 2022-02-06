@@ -20,8 +20,8 @@ project_path = r'H:/Yoko/ISOMER/'
 paths_to_FBs = []
 path_to_file = ''
 
-with os.scandir(project_path) as listOfEntries:
-    for entry in listOfEntries:
+with os.scandir(project_path) as entries_list:
+    for entry in entries_list:
         if 'FCS' in str(entry):
             paths_to_FBs.append(project_path + entry.name + '/FUNCTION_BLOCK/')
 
