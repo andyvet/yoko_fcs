@@ -1,14 +1,21 @@
 import os
+import pathlib
 
-path_to_file = r'H:\Yoko\ISOMER\HIS1064\WINDOW\11~EDF\\'
-
-
-def change_scale(path_to_file, scale_type):
-    x = 0
-    with open(path_to_file, 'r+', encoding="utf8") as file:
-        for line in file:
-            if 'ScalingMode' in line:
-                print(line, end='')
+project_path = r'H:/Yoko/ISOMER/HIS1064/WINDOW/'
+paths_to_GRs = []
 
 
-change_scale(path_to_file + 'main.xaml', 'FreeScale')
+with os.scandir(project_path) as entries_list:
+    for entry in entries_list:
+        if 'EDF' in str(entry):
+            paths_to_GRs.append(project_path + entry.name + r'/')
+
+
+def change_something(path_to_file, var_1, var_2):
+    path = pathlib.Path(path_to_file)
+    text = path.read_text(encoding="utf-8-sig").replace(var_1, var_2)
+    path.write_text(text, encoding="utf-8-sig")
+
+
+for gr_window in paths_to_GRs:
+    change_something(gr_window + 'main.xaml', 'FixedRatio', 'FreeScale')
